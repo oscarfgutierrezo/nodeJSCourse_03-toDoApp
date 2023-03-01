@@ -2,12 +2,18 @@
 require('colors');
 // Importaciones locales
 const clearConsole = require('./helpers/clearConsole');
-const { displayMenu } = require('./helpers/messages');
+const { displayMenu, pause } = require('./helpers/messages');
 
 clearConsole()
 
 const app = async() => {
-    displayMenu();
+    let opt = ''
+    
+    do {
+        opt = await displayMenu();
+        if ( opt !== '0') await pause();
+    } while (opt !== '0');
+    
 }
 
 app()
