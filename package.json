@@ -1,0 +1,22 @@
+{
+  "name": "nodejscourse_03-todoapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarfgutierrezo/oscarfgutierrezo-nodeJSCourse_03-toDoApp.git"
+  },
+  "author": "Oscar Gutierrez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscarfgutierrezo/oscarfgutierrezo-nodeJSCourse_03-toDoApp/issues"
+  },
+  "homepage": "https://github.com/oscarfgutierrezo/oscarfgutierrezo-nodeJSCourse_03-toDoApp#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
