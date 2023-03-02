@@ -1,4 +1,4 @@
-// Importaciones de terceros
+// Importaciones de Node
 const readline = require('readline')
 // Importaciones de terceros
 require('colors');
