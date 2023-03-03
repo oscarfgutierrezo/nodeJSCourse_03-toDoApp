@@ -19,6 +19,7 @@
   "homepage": "https://github.com/oscarfgutierrezo/oscarfgutierrezo-nodeJSCourse_03-toDoApp#readme",
   "dependencies": {
     "colors": "^1.4.0",
-    "inquirer": "^9.1.4"
+    "inquirer": "^9.1.4",
+    "uuid": "^9.0.0"
   }
 }
