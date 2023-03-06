@@ -26,7 +26,7 @@ const app = async() => {
                 tasks.addTask(description);
                 break;
             case '2':
-                console.log( tasks._tasksList );
+                console.log( tasks.array );
                 break;
         }
 

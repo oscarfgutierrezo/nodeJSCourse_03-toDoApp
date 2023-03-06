@@ -8,6 +8,17 @@ export class Tasks {
     this._tasksList = {};
   }
 
+  // Get permite enlazar una propiedad (array) con un valor dinamicamente calculado mediante la funcion asociada
+  get buildArray() {
+    // Crear un array que incluye cada una de las tareas del objeto _tasksList
+    const array = [];
+    Object.keys(this._tasksList).forEach( key => {
+      const task = this._tasksList[key];
+      array.push(task)
+    });
+    return array;
+  }
+
   // Método agregar tarea
   addTask( description = '' ) {
     // Instancia de la nueva tarea

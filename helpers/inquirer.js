@@ -12,31 +12,31 @@ const questions = [
         choices: [
             {
                 value: '1',
-                name: '1. Add task'
+                name: `${ '1.'.green } Add task`
             },
             {
                 value: '2',
-                name: '2. Display tasks'
+                name: `${ '2.'.green } Display tasks`
             },
             {
                 value: '3',
-                name: '3. Display finished tasks'
+                name: `${ '3.'.green } Display finished tasks`
             },
             {
                 value: '4',
-                name: '4. Display unfinished tasks'
+                name: `${ '4.'.green } Display unfinished tasks`
             },
             {
                 value: '5',
-                name: '5. Finish tasks'
+                name: `${ '5.'.green } Finish tasks`
             },
             {
                 value: '6',
-                name: '6. Remove tasks'
+                name: `${ '6.'.green } Remove tasks`
             },
             {
                 value: '0',
-                name: '0. Exit'
+                name: `${ '0.'.green } Exit`
             }
         ]
     }
