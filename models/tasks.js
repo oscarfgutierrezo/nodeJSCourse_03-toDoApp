@@ -19,6 +19,13 @@ export class Tasks {
     return array;
   }
 
+  // Insertar tareas en el objeto _taskList siguiendo el formato requerido por la clase
+  loadTasks( tasks = [] ){
+    tasks.forEach( task => {
+      this._tasksList[task.id] = task;
+    })
+  }
+
   // Método agregar tarea
   addTask( description = '' ) {
     // Instancia de la nueva tarea

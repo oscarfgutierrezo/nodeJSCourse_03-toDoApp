@@ -11,13 +11,11 @@ const app = async() => {
     // Intancia de las clase Tasks
     const tasks = new Tasks();
 
-    // Ejecutar función si la data es diferente a null
+    // Ejecutar método loadTasks si la data es diferente a null
     const tareasDB = readDB();
-
     if (tareasDB){
-        // Establecer las tareas
-    }
-    await pause()
+        tasks.loadTasks(tareasDB)
+    };
     
     // Mostrar el menú principal mientras la opción seleccionada sea diferente a "0"
     do {
@@ -38,11 +36,11 @@ const app = async() => {
                 break;
         }
 
+        // Guardar tareas en archivo .json
         saveDB(tasks.buildArray)
 
         await pause()
     } while (opt !== '0');
-    
 }
 
-app()  
+app();  

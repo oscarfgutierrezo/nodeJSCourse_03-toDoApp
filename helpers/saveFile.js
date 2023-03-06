@@ -18,5 +18,5 @@ export const readDB = () => {
   // Leer y convertir JSON en objeto de JS
   const info = fs.readFileSync( filePath, { encoding: 'utf-8'} );
   const data = JSON.parse(info);
-  return null;
+  return data;
 }
