@@ -1,6 +1,6 @@
 // Importaciones locales
 import { menu, pause, readInput } from './helpers/inquirer.js';
-import { saveDB } from './helpers/saveFile.js';
+import { readDB, saveDB } from './helpers/saveFile.js';
 import { Tasks } from './models/tasks.js';
 
 console.clear();
@@ -10,6 +10,14 @@ const app = async() => {
 
     // Intancia de las clase Tasks
     const tasks = new Tasks();
+
+    // Ejecutar función si la data es diferente a null
+    const tareasDB = readDB();
+
+    if (tareasDB){
+        // Establecer las tareas
+    }
+    await pause()
     
     // Mostrar el menú principal mientras la opción seleccionada sea diferente a "0"
     do {
