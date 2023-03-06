@@ -1,6 +1,6 @@
 // Importaciones locales
 import { menu, pause, readInput } from './helpers/inquirer.js';
-// Importaciones locales
+import { saveDB } from './helpers/saveFile.js';
 import { Tasks } from './models/tasks.js';
 
 console.clear();
@@ -26,9 +26,11 @@ const app = async() => {
                 tasks.addTask(description);
                 break;
             case '2':
-                console.log( tasks.array );
+                console.log( tasks.buildArray );
                 break;
         }
+
+        saveDB(tasks.buildArray)
 
         await pause()
     } while (opt !== '0');
