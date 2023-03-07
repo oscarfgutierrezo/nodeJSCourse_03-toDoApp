@@ -32,13 +32,20 @@ const app = async() => {
                 tasks.addTask(description);
                 break;
             case '2':
-                console.log( tasks.buildArray );
+                tasks.listTasks('all');
+                break;
+            case '3':
+                tasks.listTasks('finished');
+                break;
+            case '4':
+                tasks.listTasks('unfinished');
                 break;
         }
 
         // Guardar tareas en archivo .json
         saveDB(tasks.buildArray)
 
+        // Mensaje de confirmación de la opción seleccionada
         await pause()
     } while (opt !== '0');
 }
