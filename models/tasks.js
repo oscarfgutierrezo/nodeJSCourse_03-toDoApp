@@ -64,4 +64,11 @@ export class Tasks {
       console.log(`${index} ${description} :: ${state}`);
     })
   }
+
+  // Eliminar tarea del objeto de tareas
+  deleteTask( id = '' ){
+    if( this._tasksList[id] ){
+      delete this._tasksList[id];
+    }
+  }
 }

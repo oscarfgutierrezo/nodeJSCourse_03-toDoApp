@@ -1,5 +1,5 @@
 // Importaciones locales
-import { menu, pause, readInput } from './helpers/inquirer.js';
+import { confirmationMessage, menu, pause, readInput, tasksListRemove } from './helpers/inquirer.js';
 import { readDB, saveDB } from './helpers/saveFile.js';
 import { Tasks } from './models/tasks.js';
 
@@ -30,15 +30,32 @@ const app = async() => {
                 const description = await readInput('Task Description:');
                 // Agregar tarea en objeto de tareas
                 tasks.addTask(description);
+                console.log('\nTask successfully added');
                 break;
+            // Listar todas las tareas
             case '2':
                 tasks.listTasks('all');
                 break;
+            // Listar las tareas terminadas
             case '3':
                 tasks.listTasks('finished');
                 break;
+            // Listar las tareas no terminadas
             case '4':
                 tasks.listTasks('unfinished');
+                break;
+            // Borrar tarea
+            case '6':
+                // Id de la tarea seleccionada por el usuario
+                const id = await tasksListRemove(tasks.buildArray);
+                if( id !== '0' ) {
+                    // Eliminar tarea si hay confirmación del usuario
+                    const ok = await confirmationMessage('Do you want to delete this task?');
+                    if( ok ){
+                        tasks.deleteTask( id )
+                        console.log('\nTask successfully removed');
+                    }
+                };
                 break;
         }
 

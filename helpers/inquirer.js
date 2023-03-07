@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 import colors from 'colors';
 
 
-// Opciones del menú
+// Configuración del inquirer para el menú principal
 const questions = [
     {
         type: 'list',
@@ -73,6 +73,7 @@ export const pause = async() => {
 
 // Solicitar input escrito al usuario
 export const readInput = async( message ) => {
+    // Configuración del inquirer
     const question = [
         {
             type: 'input',
@@ -87,6 +88,55 @@ export const readInput = async( message ) => {
         }
     ];
 
+    // Retornar el valor ingresado por el usuario
     const { description } = await inquirer.prompt(question);
     return description;
+}
+
+// Listado de tareas para eliminar
+export const tasksListRemove = async( tasks = [] ) => {
+    // Construir las opciones para el inquirer
+    const choices = tasks.map( (task, i) => {
+        const { id, description } = task
+        const index = `${i + 1}.`.green
+        return {
+            value: id,
+            name: `${index} ${description}`
+        }
+    });
+    
+    choices.push({
+        value: '0',
+        name: `${'0.'.green} Cancel`
+    })
+
+    // Configuración del inquirer
+    const questions = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Delete',
+            choices
+        }
+    ];
+    
+    // Retornar el id de la tarea seleccionada por el usuario
+    const { id } = await inquirer.prompt(questions);
+    return id;
+}
+
+// Mensaje de confirmación
+export const confirmationMessage = async( message ) => {
+    // Configuración del inquirer
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ]
+
+    // Retornar opción seleccionadad por el usuario
+    const { ok } = await inquirer.prompt(question);
+    return ok;
 }
