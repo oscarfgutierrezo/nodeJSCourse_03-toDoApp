@@ -1,5 +1,6 @@
 // Importaciones de terceros
 import colors from 'colors';
+import { buildData } from '../helpers/buildDate.js';
 // Importaciones locales
 import { Task } from "./task.js";
 
@@ -70,5 +71,23 @@ export class Tasks {
     if( this._tasksList[id] ){
       delete this._tasksList[id];
     }
+  }
+
+  // Completar tareas
+  toggleCheckTasks( ids = [] ){
+    // Cambiar estado de tareas seleccionadas a completo
+    ids.forEach( id => {
+      const task = this._tasksList[id];
+      if( !task.finishedDate ){
+        task.finishedDate = buildData();
+      }
+    });
+
+    // Cambiar estado de tareas seleccionadas a no completo
+    this.buildArray.forEach( task => {
+      if( !ids.includes(task.id) ){
+        this._tasksList[task.id].finishedDate = null;
+      }
+    });
   }
 }

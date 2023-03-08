@@ -28,7 +28,7 @@ const questions = [
             },
             {
                 value: '5',
-                name: `${ '5.'.green } Finish tasks`
+                name: `${ '5.'.green } Check finished tasks`
             },
             {
                 value: '6',
@@ -139,4 +139,32 @@ export const confirmationMessage = async( message ) => {
     // Retornar opción seleccionadad por el usuario
     const { ok } = await inquirer.prompt(question);
     return ok;
+}
+
+// Listado de tareas para marcar como completadas
+export const tasksListToCheck = async( tasks = [] ) => {
+    // Construir las opciones para el inquirer
+    const choices = tasks.map( (task, i) => {
+        const { id, description, finishedDate } = task
+        const index = `${i + 1}.`.green
+        return {
+            value: id,
+            name: `${index} ${description}`,
+            checked: finishedDate ? true : false
+        }
+    });
+
+    // Configuración del inquirer
+    const question = [
+        {
+            type: 'checkbox',
+            name: 'ids',
+            message: 'Check tasks',
+            choices
+        }
+    ];
+    
+    // Retornar el id de la tarea seleccionada por el usuario
+    const { ids } = await inquirer.prompt(question);
+    return ids;
 }

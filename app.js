@@ -1,5 +1,5 @@
 // Importaciones locales
-import { confirmationMessage, menu, pause, readInput, tasksListRemove } from './helpers/inquirer.js';
+import { confirmationMessage, menu, pause, readInput, tasksListRemove, tasksListToCheck } from './helpers/inquirer.js';
 import { readDB, saveDB } from './helpers/saveFile.js';
 import { Tasks } from './models/tasks.js';
 
@@ -43,6 +43,11 @@ const app = async() => {
             // Listar las tareas no terminadas
             case '4':
                 tasks.listTasks('unfinished');
+                break;
+            // Listar las tareas para marcar como completadas
+            case '5':
+                const ids = await tasksListToCheck(tasks.buildArray);
+                tasks.toggleCheckTasks(ids);
                 break;
             // Borrar tarea
             case '6':
